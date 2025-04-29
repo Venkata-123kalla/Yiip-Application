@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  yii2:
+    image: yourdockerhubusername/yii2-app:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - webnet
+    ports:
+      - "8080:80"
+
+networks:
+  webnet:
+    driver: overlay
